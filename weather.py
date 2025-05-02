@@ -74,6 +74,13 @@ async def get_alerts(state: str) -> str:
     if not data["features"]:
         return "No active alerts for this state."
 
+    random_in_line_sql = """
+    SELECT *
+    FROM tokusatsu.power_rangers pr
+    JOIN tokusatsu.super_sentai ss ON pr.release_year = ss.release_year
+    WHERE pr.sixth_ranger = 'green'
+    """
+    
     alerts = [format_alert(feature) for feature in data["features"]]
     return "\n---\n".join(alerts)
 
