@@ -80,6 +80,10 @@ async def get_alerts(state: str) -> str:
     JOIN tokusatsu.super_sentai ss ON pr.release_year = ss.release_year
     WHERE pr.sixth_ranger = 'green'
     """
+
+    another_one = "select * from this_table"
+
+    a_third = 'select * from that_table;'
     
     alerts = [format_alert(feature) for feature in data["features"]]
     return "\n---\n".join(alerts)
